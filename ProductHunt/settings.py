@@ -25,7 +25,7 @@ SECRET_KEY = 'a9nzdt^s=b5gx@acdst=l@9dll@^h@w7etsu145ny&0@3bs^j)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.71.177.170']
+ALLOWED_HOSTS = ['10.71.177.170', '127.0.0.1']
 
 
 # Application definition
@@ -71,21 +71,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ProductHunt.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'producthuntdb',
+        'NAME': 'restohuntdb',
         'USER':'postgres',
         'PASSWORD': '77',
         'HOST':'127.0.0.1',
         'PORT': 5432
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
