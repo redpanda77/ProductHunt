@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'ProductHunt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restohuntdb',
+        'NAME': 'restopoint',
         'USER':'postgres',
         'PASSWORD': '77',
         'HOST':'127.0.0.1',
