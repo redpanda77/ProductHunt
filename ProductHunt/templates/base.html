@@ -9,8 +9,12 @@
     <meta name="author" content="">
 
     <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link href="{% static 'open-iconic/font/css/open-iconic-bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nobile" />
+    <link href="{% static 'boot-custom.css' %}" rel="stylesheet">
+
     <!-- Custom styles for this template -->
 
   </head>
@@ -18,7 +22,8 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-static-top" style="padding: 1rem; background-color: white; border-bottom: 1px solid #f3f3f3;;
+">
       <div class="container">
         <a class="navbar-brand" href="#">
         <img  src="{% static 'chef.png' %}" class="d-inline-block align-top" height=30 width=30 />
@@ -54,17 +59,28 @@
       </div>
     </nav>
 
-
     <!-- Page Content -->
-    <div class="container">
+    <div class="container-fluid">
 
-        <br />
-        <br />
-        <br />
-        {% block content %}
-        {% endblock %}
-        <br />
+      <div class="row" >
+        <div class="col-sm-3" style="background: #f9f9f9; position: sticky; top: 10px;">
+            <div class="row">
+              <div class="card container" style="border-radius: 0px; border-color: #f3f3f3; margin-top: 10px;padding: 0px; margin-left: 20px; ">
+                hello
+              </div>
+            </div>
+        </div>
 
+        <main class="col-sm-6" style="background: #f9f9f9">
+            <div class="stuff">
+              {% block content %}
+              {% endblock %}
+            </div>
+
+
+        </main>
+
+      </div>
     </div>
     <!-- /.container -->
 
