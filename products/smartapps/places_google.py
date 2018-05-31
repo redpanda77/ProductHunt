@@ -6,11 +6,12 @@ from django.utils import timezone
 import datetime
 
 # For this example, the API key is provided as a command-line argument.
+
+def google_search(search_term):
+
 api_key = 'AIzaSyAuNM3SehKx2kCFXUR5Ad6SM0aLll6FbQU'
 
-url = 'https://maps.googleapis.com/maps/api/place/details/output'
 url = 'https://maps.googleapis.com/maps/api/place/textsearch/json'
-
 
 parameters = {
     'key': api_key,

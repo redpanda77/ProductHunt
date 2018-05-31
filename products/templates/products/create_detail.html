@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row" style="padding: 20px">
+        <h4><b>Post a new restaurant</b></h4>
+    </div>
+
+    <div class="card container">
+
+        {% if error %}
+            <br />
+            <br />
+            <p>{{ error }}</p>
+        {% endif %}
+
+        <br />
+
+        <div class="row" >
+            <div style="padding-left: 30px; width: 100%;padding-right: 30px;">
+                <div class="guide">
+                    <span style="margin-right: 20px;color: #999999"> <b>1. SEARCH</b></span>
+                    <span style="margin-right: 20px;"> <b>2. INFO</b></span>
+                    <span style="margin-right: 20px; color: #999999"><b>3. MEDIA</b></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" >
+            <div class="container col-sm-12" style="padding-top: 20px;">
+                <div class="card">
+                        <div class="info-header">
+                            <div class="row" >
+                                <div class="container">
+                                    <span class="info-header-title">  {{selected.name}} </span>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="container">
+                                    <span class="info-header-address">  {{selected.formatted_address}} </span>
+                                </div>
+                            </div>
+                            <form class="form-style-4" method="POST" action="{% url 'create_info' %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                                <div class="row" >
+                                    <div class="col-sm-12 resto-search-btn">
+                                        <input class="btn btn-sm btn-primary btn-search" type="submit" value="Next" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

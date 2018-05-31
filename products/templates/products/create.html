@@ -2,39 +2,50 @@
 
 {% block content %}
 
-{% if error %}
-<br />
-<br />
-<p>{{ error }}</p>
-{% endif %}
-<br />
-<h1>Create</h1>
+<div class="row" style="padding: 20px">
+    <h4><b>Post a new restaurant</b></h4>
+</div>
+<div class="card container">
 
-<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
-{% csrf_token %}
-Title:
-<br />
-<input type="text" name="title" />
-<br />
-Body:
-<br />
-<input type="textbox" name="body" />
-<br />
-URL:
-<br />
-<input type="text" name="url" />
-<br />
-Icon:
-<br />
-<input type="file" name="icon" />
-<br />
-Image:
-<br />
-<input type="file" name="image" />
-<br />
+    {% if error %}
+    <br />
+    <br />
+    <p>{{ error }}</p>
+    {% endif %}
 
-<br />
-<input class="btn btn-primary" type="submit" value="Add Product" />
-</form>
+    <br />
 
+
+    <div class="row" >
+        <div style="padding-left: 30px; width: 100%;padding-right: 30px;">
+            <div class="guide">
+                <span style="margin-right: 20px;"> <b>1. SEARCH</b></span>
+                <span style="margin-right: 20px; color: #999999"> <b>2. INFO</b></span>
+                <span style="margin-right: 20px; color: #999999"><b>3. MEDIA</b></span>
+            </div>
+        </div>
+    </div>
+    <form class="form-style-4" method="POST" action="{% url 'create_info' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+                <div class="col-sm-2 contain-line-txt container resto-search justify-content-center align-items-center">
+                    <span>Restaurant</span>
+                </div>
+                <div class="col-sm-10 resto-search justify-content-center align-items-center" >
+                        <input type="text" name="title"  placeholder="Name of the restaurant (e.g. Casa Lucio)">
+                </div>
+
+        </div>
+
+        <div class="row" >
+            <div class="col-sm-12 resto-search-btn">
+                <input class="btn btn-sm btn-primary btn-search" type="submit" value="Next" />
+            </div>
+        </div>
+    </form>
+
+
+
+
+</div>
 {% endblock %}

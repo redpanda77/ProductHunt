@@ -1,0 +1,30 @@
+  if request.method == 'POST':
+        print(request)
+        if request.POST['title'] and request.POST['body'] and request.POST['url'] and request.FILES['icon'] and request.FILES['image']:
+            product = Product()
+            product.title = request.POST['title']
+            product.body = request.POST['body']
+            if request.POST['body'].startswith('http://') or request.POST['body'].startswith('https://'):
+                product.url = request.POST['url']
+            else:
+                product.url = 'http://' + request.POST['url']
+            product.body  = request.POST['body']
+            product.icon  = request.FILES['icon']
+            product.image = request.FILES['image']
+            product.pub_date = timezone.datetime.now()
+            product.votes_total = 1
+            product.hunter = request.user
+            product.save()
+            return redirect('/products/'+ str(product.id))
+        else:
+            return render(request, 'products/create.html', {'error':'All fields are required!'})
+
+
+        product.name = request.POST['name']
+        product.product_id = request.POST['product_id']
+        product.pub_date = request.POST['name']
+        product.body = request.POST['name']
+        product.address = request.POST['formatted_address']
+        product.rating = request.POST['name']
+        product.categories = request.POST['name']
+        product.url = request.POST['name']

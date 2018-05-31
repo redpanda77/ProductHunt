@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row" style="padding: 20px">
+    <h4><b>Post a new restaurant</b></h4>
+</div>
+<div class="card container">
+
+    {% if error %}
+    <br />
+    <br />
+    <p>{{ error }}</p>
+    {% endif %}
+
+    <br />
+
+
+    <div class="row" >
+        <div style="padding-left: 30px; width: 100%;padding-right: 30px;">
+            <div class="guide">
+                <span style="margin-right: 20px;color: #999999"> <b>1. SEARCH</b></span>
+                <span style="margin-right: 20px;"> <b>2. INFO</b></span>
+                <span style="margin-right: 20px; color: #999999"><b>3. MEDIA</b></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="container col-sm-12" style="padding-top: 20px;">
+            <div class="card-deck justify-content-center align-self-center">
+                {% for gresult in gresults %}
+                <form class="form-style-2" method="POST" action="{% url 'create_detail' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <!-- Card -->
+                    <div class="card mb-4" style="min-width: 10rem; max-width: 10rem; min-height: 16rem; max-height: 16rem;">
+                      <!-- Card image -->
+                      <img class="card-img-top" src={{gresult.photo}} alt="Card image cap" >
+                      <!-- Card content -->
+                      <div class="card-body">
+                        <!-- Title -->
+                        <h4 class="card-title" style="font-size: 12px;"><b>{{gresult.name}}</b></h4>
+                        <!-- Text -->
+                        <p class="card-text" style="font-size: 10px;">{{gresult.formatted_address}} </p>
+                        <!-- Button -->
+                        <input type="hidden" value='{{gresult.name}}' name="name" />
+                          <input type="hidden" value='{{gresult.place_id}}' name="place_id" />
+                          <input type="hidden" value='{{gresult.formatted_address}}' name="formatted_address" />
+                          <input type="hidden" value='{{gresult.rating}}' name="rating" />
+                          <input type="hidden" value='{{gresult.types}}' name="types" />
+                          <input type="hidden" value='{{gresult.geometry}}' name="geometry" />
+                          <input type="hidden" value='{{gresult.place_id}}' name="place_id" />
+                        <input class="btn btn-primary btn-select" type="submit" value="Select" />
+
+                      </div>
+                    </div>
+                </form>
+                    <!-- Card -->
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

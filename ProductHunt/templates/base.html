@@ -63,7 +63,8 @@
     <div class="container-fluid">
 
       <div class="row" >
-        <div class="col-sm-3" style="background: #f9f9f9; position: sticky; top: 10px;">
+
+        <div class="col-sm-3 " style="background: #f9f9f9; position: sticky; top: 10px;">
             <div class="row">
               <div class="card container" style="border-radius: 0px; border-color: #f3f3f3; margin-top: 10px;padding: 0px; margin-left: 20px; ">
                 hello
@@ -71,14 +72,21 @@
             </div>
         </div>
 
-        <main class="col-sm-6" style="background: #f9f9f9">
-            <div class="stuff">
+        <main class="col-sm-6" style="background: #f9f9f9; padding-top: 20px;">
+
               {% block content %}
               {% endblock %}
-            </div>
 
 
         </main>
+
+        <div class="col-sm-3 " style="background: #f9f9f9; position: sticky; top: 10px;">
+            <div class="row">
+              <div class="card container" style="border-radius: 0px; border-color: #f3f3f3; margin-top: 10px;padding: 0px; margin-left: 20px; ">
+
+              </div>
+            </div>
+        </div>
 
       </div>
     </div>
