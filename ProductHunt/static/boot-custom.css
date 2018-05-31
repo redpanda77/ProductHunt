@@ -1,0 +1,139 @@
+
+
+.btn{
+    margin: 2px;
+}
+
+.title-text{
+    font-size:16px;
+    font-family: Nobile;
+    font-weight: 500;
+}
+
+.desc-text{
+    font-size: 12px;
+    font-family: Nobile;
+}
+
+.xs-btn-txt{
+    font-size: 10px;
+    padding: 0px;
+}
+
+.form-style-4
+{
+    background: white;
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: 10px 10px 10px 10px;
+    padding: 20px;
+}
+
+.resto-search{
+    padding: 15px;
+}
+.resto-search-btn{
+    padding-bottom: 10px;
+    padding-top: 2px;
+}
+
+.btn-search{
+    display:      block;
+    margin-left:  auto;
+    margin-right: 0px;
+    padding: 7px 13px 7px 13px;
+    font-size: 14px;
+}
+
+
+input::placeholder
+{
+    line-height:normal;
+    padding: 15px 0px 15px 0px;
+    color: #bbccdd;
+    font-size: 14px;
+}
+
+
+.form-style-4 input[type=text]
+{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #bbccdd;
+    width: 100%;
+    outline: none;
+    padding: 10px 0px 10px 0px;
+    color: black;
+    font-size: 14px;
+}
+
+.contain-line-txt{
+    font-size: 14px;
+    color: #999999;
+    vertical-align: middle;
+    line-height: 320%;
+    }
+
+.guide{
+    font-size: 10px;
+    horiz-align: center;
+    border-bottom: lightgray 1px solid;
+    color: black;
+    padding-top: 10px;
+    vertical-align: middle;
+    line-height: 320%;
+    width: 100%;
+}
+
+.card-img-top{
+   width: 100%!important;
+   height: 100px!important;
+   object-fit: cover;
+}
+
+.form-style-3
+{
+    background: white;
+    border: none;
+    width: 100%;
+
+   object-fit: cover;
+}
+
+.card-deck-container{
+    vertical-align: center;
+    horiz-align: center;
+
+}
+
+.card-body .card-title{
+    vertical-align: middle;
+
+}
+
+.btn-select {
+    font-size: 12px;
+    padding: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.card-body{
+    padding-top: 15px;
+    margin: 0px;
+}
+
+.info-header{
+    padding: 20px;
+    padding-left: 20px;
+}
+
+info-header-title{
+    font-size: 16px;
+}
+
+.info-header-address{
+    font-size: 12px;
+}
