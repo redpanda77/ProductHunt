@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['10.71.177.170', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'vote',
     'posts.apps.PostsConfig',
     'products.apps.ProductsConfig',
     'accounts.apps.AccountsConfig',

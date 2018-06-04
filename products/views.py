@@ -42,7 +42,6 @@ def create_detail(request):
     product.name = request.POST['name']
     product.product_id = request.POST['place_id']
     product.coordinates = request.POST['geometry']
-    product.pub_date = timezone.datetime.now()
     product.body = ''
     product.address = request.POST['formatted_address']
     product.rating = request.POST['rating']
@@ -53,10 +52,20 @@ def create_detail(request):
     post.hunter = request.user
     post.pub_date = timezone.datetime.now()
     post.product = product
+    post.type = 'product'
     post.save()
+    product.votes.up(request.user.id)
 
     return render(request, 'products/create_detail.html', {'selected':selected_resto})
 
 def detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     return render(request, 'products/detail.html', {'product':product})
+
+@login_required
+def vote_up(request, product_id):
+    if request.method == 'POST':
+        product = get_object_or_404(Product, pk=product_id)
+        if not product.votes.exists(request.user.id):
+            product.votes.up(request.user.id)
+        return redirect('home')

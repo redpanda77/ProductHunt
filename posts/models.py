@@ -6,7 +6,7 @@ from products.models import Product
 class Post(models.Model):
 
     pub_date    = models.DateTimeField()
-    vote        = models.IntegerField(default=1)
+    type        = models.CharField(max_length=255, default='vote')
     product     = models.ForeignKey(Product, on_delete=models.CASCADE)
     hunter      = models.ForeignKey(User, on_delete=models.CASCADE)
 
