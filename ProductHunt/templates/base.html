@@ -2,6 +2,7 @@
 <html lang="en">
 
   <head>
+
     {% load staticfiles %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,48 +21,71 @@
   </head>
 
   <body>
-
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-static-top" style="padding: 1rem; background-color: white; border-bottom: 1px solid #f3f3f3;;
-">
+    <nav class="navbar navbar-expand-lg navbar-light navbar-static-top" style="background-color: white; border-bottom: 1px solid #f3f3f3;">
       <div class="container">
-        <a class="navbar-brand" href="#">
-        <img  src="{% static 'chef.png' %}" class="d-inline-block align-top" height=30 width=30 />
-        ProductHunt - CLONE
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            {% if user.is_authenticated %}
-            <a class="nav-link" href="{% url 'create' %}"> <span class="oi oi-plus"></span> </a>
-            <li class="nav-item">
-            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Log Out</a>
-            <form id="logout" method="POST" action="{% url 'logout' %}">
-              {% csrf_token %}
-              <input type="hidden" />
-            </form>
-            </li>
-            {% else %}
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Sign Up</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Log In</a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+        <div class="row">
+          <a class="navbar-brand" href="{% url 'home' %}">
+          <img  src="{% static 'mountains.png' %}" class="d-inline-block align-top" height=50 width=50 />
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          </form>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+              <a class="nav-link" href="{% url 'create' %}"> <span class="oi oi-plus"></span> </a>
+              {% endif %}
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+            </ul>
+          </div>
+          <div class="container login-btns ">
+            <div class="row">
+                {% if user.is_authenticated %}
+                  <!--  <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Log Out</a> -->
+                <div class="col">
+                  <form id="logout" method="POST" action="{% url 'logout' %}">
+                    <a class="float-right" href="javascript:{document.getElementById('logout').submit()}">
+                      <button type="button" class="btn btn-light log-bton ">LOGOUT</button>
+                    </a>
+                    {% csrf_token %}
+                  </form>
+                </div>
+
+                {% else %}
+                <div class="col">
+                  <form id="signup" method="GET" action="{% url 'signup' %}">
+                      <a class="float-right" href="javascript:{document.getElementById('signup').submit()}">
+                        <button type="button" class="btn btn-light log-bton">SIGN UP</button>
+                      </a>
+                      {% csrf_token %}
+                  </form>
+
+                  <form id="login" method="GET" action="{% url 'login' %}" style="padding: 0;">
+                      <a class="float-right" href="javascript:{document.getElementById('login').submit()}">
+                        <button type="button" class="btn btn-light log-bton">LOG IN</button>
+                      </a>
+                      {% csrf_token %}
+                  </form>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+            </div>
+        </div> <!-- row end -->
+      </div> <!-- container end -->
     </nav>
 
     <!-- Page Content -->
     <div class="container-fluid">
-
       <div class="row" >
 
         <div class="col-sm-3 " style="background: #f9f9f9; position: sticky; top: 10px;">

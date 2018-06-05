@@ -137,3 +137,15 @@ info-header-title{
 .info-header-address{
     font-size: 12px;
 }
+
+.log-bton{
+        font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
+        font-size: 8px;
+        padding: 10px;
+        padding-bottom: 7px;
+        padding-top: 7px;
+        align-items: center;
+        position: relative;
+        top: 0px;
+        right: 15px;
+}

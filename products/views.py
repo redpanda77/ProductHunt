@@ -15,7 +15,6 @@ def home(request):
 
 @login_required
 def create(request):
-
     return render(request, 'products/create.html')
 
 @login_required
@@ -55,6 +54,8 @@ def create_detail(request):
     post.type = 'product'
     post.save()
     product.votes.up(request.user.id)
+
+
 
     return render(request, 'products/create_detail.html', {'selected':selected_resto})
 
