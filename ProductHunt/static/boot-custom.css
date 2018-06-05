@@ -149,3 +149,9 @@ info-header-title{
         top: 0px;
         right: 15px;
 }
+
+.navbar{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+

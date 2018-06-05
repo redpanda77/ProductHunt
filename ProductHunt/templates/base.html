@@ -22,18 +22,21 @@
 
   <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-static-top" style="background-color: white; border-bottom: 1px solid #f3f3f3;">
-      <div class="container">
-        <div class="row">
+    <div class="container col-sm-6">
+      <nav class="navbar navbar-expand-lg navbar-light navbar-static-top" style="background-color: white; border-bottom: 1px solid #f3f3f3;">
+
           <a class="navbar-brand" href="{% url 'home' %}">
           <img  src="{% static 'mountains.png' %}" class="d-inline-block align-top" height=50 width=50 />
           </a>
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
           </form>
+
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               {% if user.is_authenticated %}
@@ -47,43 +50,46 @@
               </li>
             </ul>
           </div>
-          <div class="container login-btns ">
-            <div class="row">
-                {% if user.is_authenticated %}
-                  <!--  <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Log Out</a> -->
-                <div class="col">
+
+          <div class="container-fluid login-btns" style="padding-right: 0px;">
+
+              {% if user.is_authenticated %}
+
+              <div class="col float-right" style="padding-right: 0px; right: 0px;">
                   <form id="logout" method="POST" action="{% url 'logout' %}">
-                    <a class="float-right" href="javascript:{document.getElementById('logout').submit()}">
+                    {% csrf_token %}
+                    <a class="float-right" style="padding-right: 0px; right: 0px;" href="javascript:{document.getElementById('logout').submit()}">
                       <button type="button" class="btn btn-light log-bton ">LOGOUT</button>
                     </a>
-                    {% csrf_token %}
                   </form>
-                </div>
-
-                {% else %}
-                <div class="col">
-                  <form id="signup" method="GET" action="{% url 'signup' %}">
-                      <a class="float-right" href="javascript:{document.getElementById('signup').submit()}">
-                        <button type="button" class="btn btn-light log-bton">SIGN UP</button>
-                      </a>
-                      {% csrf_token %}
-                  </form>
-
-                  <form id="login" method="GET" action="{% url 'login' %}" style="padding: 0;">
-                      <a class="float-right" href="javascript:{document.getElementById('login').submit()}">
-                        <button type="button" class="btn btn-light log-bton">LOG IN</button>
-                      </a>
-                      {% csrf_token %}
-                  </form>
-                </div>
-                {% endif %}
               </div>
-            </div>
-            </div>
-        </div> <!-- row end -->
-      </div> <!-- container end -->
-    </nav>
 
+              {% else %}
+
+              <div class="col">
+                <form id="signup" method="GET" action="{% url 'signup' %}">
+                    <a class="float-right" href="javascript:{document.getElementById('signup').submit()}">
+                      <button type="button" class="btn btn-light log-bton">SIGN UP</button>
+                    </a>
+                    {% csrf_token %}
+                </form>
+
+                <form id="login" method="GET" action="{% url 'login' %}" style="padding: 0;">
+                    <a class="float-right" href="javascript:{document.getElementById('login').submit()}">
+                      <button type="button" class="btn btn-light log-bton">LOG IN</button>
+                    </a>
+                    {% csrf_token %}
+                </form>
+
+              </div>
+              {% endif %}
+
+            </div>
+
+
+
+    </nav>
+    </div>
     <!-- Page Content -->
     <div class="container-fluid">
       <div class="row" >
