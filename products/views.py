@@ -10,7 +10,7 @@ import re
 
 # Create your views here.
 def home(request):
-    products = Product.objects
+    products = Product.objects.order_by('vote_score').reverse()
     return render(request, 'products/home.html', {'products': products})
 
 @login_required

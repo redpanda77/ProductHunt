@@ -142,8 +142,8 @@ info-header-title{
         font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
         font-size: 8px;
         padding: 10px;
-        padding-bottom: 7px;
-        padding-top: 7px;
+        padding-bottom: 10px;
+        padding-top: 10px;
         align-items: center;
         position: relative;
         top: 0px;
@@ -154,4 +154,3 @@ info-header-title{
     padding-right: 0px;
     padding-left: 0px;
 }
-
