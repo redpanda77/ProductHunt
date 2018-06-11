@@ -10,5 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('products/', include('products.urls')),
-    url(r'^accounts/', include('registration.backends.default.urls')),
+    #url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^invitations/', include('invitations.urls', namespace='invitations')),
 ] + static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
