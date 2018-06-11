@@ -1,4 +1,4 @@
-#!/home/redpanda/PycharmProjects/ProductHunt/venv2/bin/python
+#!/home/redpanda/ProductHunt/venv2/bin/python
 
 # -*- coding: utf-8 -*-
 import re

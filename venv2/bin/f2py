@@ -1,4 +1,4 @@
-#!/home/redpanda/PycharmProjects/ProductHunt/venv2/bin/python
+#!/home/redpanda/ProductHunt/venv2/bin/python
 # See http://cens.ioc.ee/projects/f2py2e/
 from __future__ import division, print_function
 

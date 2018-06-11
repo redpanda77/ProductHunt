@@ -59,7 +59,7 @@
                             <a class="nav-link float-right" href="{% url 'create' %}"> <span class="oi oi-plus"></span> </a>
                           </div>
                           <div class="col-*" style="padding-left: 10px; right: 0px;">
-                              <form id="logout" method="POST" action="{% url 'logout' %}">
+                              <form id="logout" method="POST" action="{% url 'auth_logout' %}">
                                 {% csrf_token %}
                                 <a class="float-right" style="padding-right: 0px; right: 0px;" href="javascript:{document.getElementById('logout').submit()}">
                                   <button type="button" class="btn btn-light log-bton ">LOGOUT</button>
@@ -72,14 +72,14 @@
                   {% else %}
 
                   <div class="col">
-                    <form id="signup" method="GET" action="{% url 'signup' %}">
+                    <form id="signup" method="GET" action="{% url 'registration_register' %}">
                         <a class="float-right" href="javascript:{document.getElementById('signup').submit()}">
                           <button type="button" class="btn btn-primary log-bton">SIGN UP</button>
                         </a>
                         {% csrf_token %}
-                    </form>
+                    </form> -->
 
-                    <form id="login" method="GET" action="{% url 'login' %}" style="padding: 0;">
+                    <form id="login" method="GET" action="{% url 'auth_login' %}" style="padding: 0;">
                         <a class="float-right" href="javascript:{document.getElementById('login').submit()}">
                           <button type="button" class="btn btn-light log-bton">LOG IN</button>
                         </a>

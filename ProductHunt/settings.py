@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -34,7 +33,7 @@ INSTALLED_APPS = [
     'vote',
     'posts.apps.PostsConfig',
     'products.apps.ProductsConfig',
-    'accounts.apps.AccountsConfig',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -79,7 +78,7 @@ WSGI_APPLICATION = 'ProductHunt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restopoint',
+        'NAME': 'producthikedb',
         'USER':'postgres',
         'PASSWORD': '77',
         'HOST':'127.0.0.1',
@@ -132,3 +131,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+ACCOUNT_ACTIVATION_DAYS = 7
