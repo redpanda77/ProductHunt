@@ -1,12 +1,16 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from .models import Product
-from posts.models import Post
-from django.utils import timezone
-from .smartapps.search import google_search
+import re
 import json
 from pprint import pprint
-import re
+from django.conf import settings
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.utils import timezone
+from django.core.mail import send_mail
+from .models import Product
+from posts.models import Post
+from .smartapps.search import google_search
+
+
 
 # Create your views here.
 def home(request):
@@ -55,7 +59,11 @@ def create_detail(request):
     post.save()
     product.votes.up(request.user.id)
 
-
+    subject = 'Product Added'
+    message = 'message'
+    from_email = settings.EMAIL_HOST_USER
+    to_list = ['gcasajusrey@gmail.com']
+    send_mail(subject, message, from_email, to_list, fail_silently=False)
 
     return render(request, 'products/create_detail.html', {'selected':selected_resto})
 
