@@ -26,7 +26,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['10.71.177.170', '127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -34,7 +33,6 @@ INSTALLED_APPS = [
     'vote',
     'posts.apps.PostsConfig',
     'products.apps.ProductsConfig',
-    'invitations',
     'django.contrib.admin',
     'django.contrib.sites',
     'django.contrib.auth',
@@ -42,17 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.linkedin',
+    'invitations',
+    'django_extensions',
 ]
 
 SITE_ID = 1
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,13 +128,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -159,6 +153,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 ACCOUNT_ACTIVATION_DAYS = 7
-ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+
+SIGNUP_REDIRECT = 'account_signup'
