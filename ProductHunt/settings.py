@@ -158,4 +158,5 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
 
+LOGIN_REDIRECT_URL = 'account_signup'
 SIGNUP_REDIRECT = 'account_signup'
