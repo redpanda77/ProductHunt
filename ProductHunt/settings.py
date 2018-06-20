@@ -152,11 +152,47 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-ACCOUNT_ACTIVATION_DAYS = 7
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    }
+}
 
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#ALLAUTH
+
+ACCOUNT_ACTIVATION_DAYS = 7
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
-ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+# INVITATIONS MODULE
 
-LOGIN_REDIRECT_URL = 'account_signup'
+INVITATIONS_INVITATION_EXPIRY = 3
+INVITATIONS_SIGNUP_REDIRECT = 'account_signup'
+INVITATIONS_INVITATION_ONLY = True
+INVITATIONS_ACCEPT_INVITE_AFTER_SIGNUP = True
+ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+SOCIALACCOUNT_QUERY_EMAIL=True
+
+LOGIN_REDIRECT_URL = '/'
 SIGNUP_REDIRECT = 'account_signup'
+

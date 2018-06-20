@@ -15,6 +15,8 @@ from .smartapps.search import google_search
 # Create your views here.
 def home(request):
     products = Product.objects.order_by('vote_score').reverse()
+    for i in products:
+        print(i.name, i.vote_score)
     return render(request, 'products/home.html', {'products': products})
 
 @login_required
@@ -73,8 +75,10 @@ def detail(request, product_id):
 
 @login_required
 def vote_up(request, product_id):
+    print('Enters vote up...')
     if request.method == 'POST':
         product = get_object_or_404(Product, pk=product_id)
         if not product.votes.exists(request.user.id):
             product.votes.up(request.user.id)
+            print(product.vote_score)
         return redirect('home')
