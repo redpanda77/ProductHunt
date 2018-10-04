@@ -2,20 +2,58 @@
 {% load staticfiles %}
 {% block content %}
 
-<div class="card stuff">
+
+
+<div class="jumbotron" style="background-color: white; border-bottom: 1px solid #f3f3f3; margin: 0px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-4" style="font-family: Roboto, sans-serif; padding-left: 0px">
+
+                <h4 style="font-weight: 600;">Discover your next favorite thing</h4>
+                <br>
+                <p style="color: lightgray">Product Hunt surfaces the best new products, every day.
+                    It's a place for product-loving enthusiasts to share and
+                    geek out about the latest mobile apps, websites, hardware
+                    projects, and tech creations.</p>
+            </div>
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row" >
+
+    <!-- Left column -->
+    <div class="col-sm-2" style="background: #f9f9f9; padding-top: 20px;">
+        <div class="row">
+          <div class="card container">
+          </div>
+        </div>
+    </div>
+
+    <!-- Main product listing column -->
+    <main class="col-sm-6" style="background: #f9f9f9; padding-top: 20px;">
+          <div class="card stuff">
+
     {% for product in products.all %}
-    <div class="d-flex flex-row card" style="border-color: #f9f9f9; border-bottom:1px #f9f9f9 solid; padding: 5px; border-radius: 0px  ">
-            <div class="box-img" style="padding-top: 15px;padding-left: 10px; padding-bottom: 0px;">
+
+
+        <div class="media" style="border-color: #f9f9f9; border-bottom:1px #f9f9f9 solid; padding: 10px; border-radius: 0px  ">
+            <!-- Card media photo ; align-self-start -->
+            <div class= "align-self-center mr-3" style="padding-left: 20px;">
                 <img  src="{% static 'food.png' %}" class="d-inline-block align-top" height=50 width=50 />
             </div>
-
-            <div class="flex-grow-1 align-items-end box-text" style="padding-top: 10px; padding-left: 25px;">
+            <!-- Card Text Content -->
+            <div class="media-body" style="padding-top: 0px; padding-left: 0px;">
                 <div class="title-text" style="padding-top: 10px;"> {{ product.name }} </div>
-                 <div class=" desc-text" style="padding: 0px;"> {{ product.address }} </div>
-                <div><br></div>
+                <div class=" desc-text" style="padding: 0px;">  {{ product.address }} </div>
             </div>
-
-            <div class="d-flex align-items-end box-info" style="padding: 10px; padding-right: 20px;">
+            <!-- Card Buttons Control -->
+            <div class="d-flex align-items-end box-info mt-0" style="padding: 10px; padding-right: 20px;">
                 <small>
                     <form id="upvote{{ product.id }}" method="POST" action="{% url 'vote_up' product.id %}">
                     {% csrf_token %}
@@ -26,17 +64,52 @@
                         </a>
                     </form>
                 </small>
-
-
-
-
                 <button type="button" class="btn btn-outline-dark btn-sm">
                     <div class="xs-btn-txt"> <span class="oi oi-comment-square"></span> 2</div>
                 </button>
+
             </div>
+
         </div>
     {% endfor %}
 
 </div>
+    </main>
+    <div class="col-md-2" style="background: #f9f9f9; padding-top: 20px;">
+        <div class="row">
+
+            <div class="card container" >
+                <div class="card-body text-center">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h4>Subscribe</h4>
+                            <p style="font-size: 12px">Subscriber our newsletter to receive the latest updates and promostions.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Enter your email" required>
+                                <input type="submit" class="btn btn-primary" value="Subscribe" style="font-size: 10px; width: 100%; margin-top: 5px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="card container" style="margin-top: 5px;">
+                    Member List
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-sm-2" style="background: #f9f9f9; position: sticky; top: 10px;">
+    </div>
+
+  </div>
+</div>
+
+
 
 {% endblock %}

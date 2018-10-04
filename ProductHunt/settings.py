@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -27,21 +26,31 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['10.71.177.170', '127.0.0.1']
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'vote',
     'posts.apps.PostsConfig',
     'products.apps.ProductsConfig',
-    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
+    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+    'invitations',
+    'django_extensions',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +80,16 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
+
 WSGI_APPLICATION = 'ProductHunt.wsgi.application'
 
 # Database
@@ -79,7 +98,7 @@ WSGI_APPLICATION = 'ProductHunt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restopoint',
+        'NAME': 'producthikedb',
         'USER':'postgres',
         'PASSWORD': '77',
         'HOST':'127.0.0.1',
@@ -105,23 +124,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'autoredpanda@gmail.com'
+EMAIL_HOST_PASSWORD = '63901370g'
+EMAIL_PORT = 587
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'ProductHunt/static/')
@@ -132,3 +151,48 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SCOPE': ['email', 'public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    }
+}
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#ALLAUTH
+
+ACCOUNT_ACTIVATION_DAYS = 7
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+# INVITATIONS MODULE
+
+INVITATIONS_INVITATION_EXPIRY = 3
+INVITATIONS_SIGNUP_REDIRECT = 'account_signup'
+INVITATIONS_INVITATION_ONLY = True
+INVITATIONS_ACCEPT_INVITE_AFTER_SIGNUP = True
+ACCOUNT_ADAPTER = 'invitations.models.InvitationsAdapter'
+SOCIALACCOUNT_QUERY_EMAIL=True
+
+LOGIN_REDIRECT_URL = '/'
+SIGNUP_REDIRECT = 'account_signup'
+

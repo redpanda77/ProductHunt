@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from vote.models import VoteModel
 # Create your models here.
 
-class Product(VoteModel, models.Model):
+class Product(VoteModel,models.Model): #
 
     name        = models.CharField(max_length=255)
     product_id  = models.CharField(max_length=255)
